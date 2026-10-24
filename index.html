@@ -2,7 +2,7 @@
 <html lang="en-ZA">
 <!--
   ══════════════════════════════════════════════════════════════════
-  CFD CONSTRUCTION — CLIENT DEMO v17 (Carter Digitals concept banner and premium navigation motion)
+  CFD CONSTRUCTION — CLIENT DEMO v18 (Carter Digitals concept banner and premium navigation motion)
   Prepared by Carter Digitals · Private client preview
 
   v12 ────────────────────────────────────────────────────────────────
@@ -15,6 +15,7 @@
   • v13: richer blue / ink / white gradient system, construction budget estimator, tile quantity and installed-cost estimator, upgraded contact block and Google Maps embed.
   • v14: fixed the navbar hide-on-scroll bug; added an always-visible floating navigation with premium shadow; upgraded typography and South African construction-focused copy.
   • v17: complete gallery rebuild — stable 3D project stage, isolated motion layers, polished image fallback and resilient looping controls.
+  • v18: premium interactive project brief builder with scope, finish priority, size selector and WhatsApp handoff.
   • All figures are planning guidance only; they are not a CFD quotation.
   ══════════════════════════════════════════════════════════════════
 -->
@@ -1545,6 +1546,17 @@ p,li,label,input,textarea,select{font-family:var(--font-b)}
 @media(prefers-reduced-motion:reduce){#carTrack .p-card.gallery-card,#work .fchip,.car-arrow,.cthumb,.car-progress i,#carTrack .p-card .art img,#carTrack .p-view svg{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 
+<style id="cfd-premium-project-planner-styles">
+/* v18 — premium interactive project planner */
+.project-planner{position:relative;overflow:hidden;padding:clamp(3.5rem,7vw,6rem) 0;background:radial-gradient(ellipse at 90% 10%,rgba(222,148,48,.15),transparent 38%),linear-gradient(145deg,#211b15,#15120f 78%);color:#f9f2e6}
+.project-planner:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(rgba(235,203,140,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(235,203,140,.15) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(90deg,transparent,#000 55%,#000)}
+.pp-shell{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.72fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.pp-copy h2{font-size:clamp(2.4rem,1.4rem + 3.1vw,4.2rem);margin:.8rem 0 1rem;max-width:12ch}.pp-copy h2 em{color:#e8b66d}.pp-copy>p{color:#d0c4b1;max-width:54ch}.pp-kicker{display:inline-flex;align-items:center;gap:.65rem;color:#edc47e;font:500 .7rem var(--font-m);letter-spacing:.18em;text-transform:uppercase}.pp-kicker:before{content:"";height:1px;width:28px;background:#d58a43}.pp-trust{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.6rem}.pp-trust span{border:1px solid rgba(235,203,140,.22);background:rgba(255,255,255,.035);border-radius:999px;padding:.48rem .75rem;font-size:.76rem;color:#e5d7c0}
+.pp-card{border:1px solid rgba(235,203,140,.24);border-radius:26px;padding:clamp(1.2rem,3vw,2rem);background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));box-shadow:0 30px 90px -38px #000;backdrop-filter:blur(16px)}.pp-stephead{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:1.2rem;color:#e9d8bb;font:500 .68rem var(--font-m);letter-spacing:.14em;text-transform:uppercase}.pp-progress{height:4px;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden;margin-bottom:1.6rem}.pp-progress span{display:block;width:25%;height:100%;background:linear-gradient(90deg,#c0622f,#e8bd75);transition:width .3s ease}.pp-field{margin-bottom:1.25rem}.pp-field label{display:block;color:#f8eee0;font-size:.86rem;font-weight:700;margin-bottom:.65rem}.pp-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}.pp-option{position:relative;text-align:left;border:1px solid rgba(235,203,140,.19);background:rgba(10,8,6,.18);border-radius:14px;padding:.85rem .9rem;min-height:68px;transition:transform .2s,border-color .2s,background .2s}.pp-option strong{display:block;font-size:.86rem;color:#fff5e6}.pp-option small{display:block;margin-top:.18rem;color:#c8b9a2;font-size:.72rem}.pp-option:hover{transform:translateY(-2px);border-color:rgba(235,203,140,.55)}.pp-option[aria-pressed="true"]{border-color:#e5ad5f;background:linear-gradient(135deg,rgba(192,98,47,.26),rgba(222,148,48,.13));box-shadow:inset 0 0 0 1px rgba(235,203,140,.12)}.pp-option[aria-pressed="true"]:after{content:"✓";position:absolute;right:.65rem;top:.55rem;color:#f0c779;font-weight:800}.pp-range{display:flex;align-items:center;gap:1rem}.pp-range input{width:100%;accent-color:#d58a43}.pp-range output{white-space:nowrap;color:#f2c87f;font:600 .88rem var(--font-m)}.pp-summary{margin:1.3rem 0;padding:1.1rem;border-radius:16px;background:rgba(0,0,0,.2);border:1px solid rgba(235,203,140,.15)}.pp-summary-top{display:flex;justify-content:space-between;gap:1rem;align-items:start}.pp-summary-top small{display:block;color:#cbbba4;font-size:.74rem}.pp-summary-top strong{display:block;color:#f6d08b;font-size:1.35rem;letter-spacing:-.03em}.pp-summary ul{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin-top:.75rem}.pp-summary li{font-size:.7rem;color:#e5d8c4;border:1px solid rgba(255,255,255,.1);padding:.25rem .5rem;border-radius:999px}.pp-disclaimer{font-size:.7rem;color:#bfb19e;line-height:1.55;margin:.8rem 0 1rem}.pp-actions{display:flex;flex-wrap:wrap;gap:.65rem}.pp-actions .btn{flex:1;min-width:180px}.pp-card .btn-ghost{color:#f9f0e1;border-color:rgba(235,203,140,.35)}
+@media(max-width:850px){.pp-shell{grid-template-columns:1fr}.pp-copy h2{max-width:15ch}.pp-card{max-width:640px;width:100%}}
+@media(max-width:430px){.pp-options{gap:.45rem}.pp-option{padding:.72rem;min-height:65px}.pp-actions .btn{width:100%}}
+</style>
+
 </head>
 <body>
 
@@ -2663,6 +2675,39 @@ p,li,label,input,textarea,select{font-family:var(--font-b)}
 </section>
 
 <!-- ═══════ QUOTE / CONTACT ═══════ -->
+<section class="project-planner" id="project-planner" aria-labelledby="pp-title">
+  <div class="wrap pp-shell">
+    <div class="pp-copy reveal">
+      <span class="pp-kicker">Your project, thoughtfully planned</span>
+      <h2 id="pp-title">Make the next step feel <em>clear.</em></h2>
+      <p>Choose a few details and build a useful starting brief for your renovation or repair. CFD can use it to understand your priorities before discussing measurements, materials and a site-specific quotation.</p>
+      <div class="pp-trust"><span>01 / Choose your scope</span><span>02 / Set your priorities</span><span>03 / Start the conversation</span></div>
+      <p style="margin-top:2rem;font-size:.85rem;color:#b9aa94">A better first conversation means fewer unknowns, clearer expectations and a more useful quote discussion.</p>
+    </div>
+    <div class="pp-card reveal" aria-label="Interactive project brief builder">
+      <div class="pp-stephead"><span>Project brief builder</span><span id="pp-step-label">Step 01 / 03</span></div>
+      <div class="pp-progress" aria-hidden="true"><span id="pp-progress-fill"></span></div>
+      <div class="pp-field"><label>What are you planning?</label><div class="pp-options" id="pp-project-options">
+        <button class="pp-option" type="button" data-value="Kitchen renovation" data-base="18000" aria-pressed="true"><strong>Kitchen</strong><small>Refresh or renovation</small></button>
+        <button class="pp-option" type="button" data-value="Bathroom renovation" data-base="15000" aria-pressed="false"><strong>Bathroom</strong><small>Wet areas and finishes</small></button>
+        <button class="pp-option" type="button" data-value="Painting and flooring" data-base="6500" aria-pressed="false"><strong>Paint & flooring</strong><small>Surface transformation</small></button>
+        <button class="pp-option" type="button" data-value="Roofing, repairs or steelwork" data-base="9000" aria-pressed="false"><strong>Repairs & exterior</strong><small>Roofing, paving, steelwork</small></button>
+      </div></div>
+      <div class="pp-field"><label>What matters most?</label><div class="pp-options" id="pp-priority-options">
+        <button class="pp-option" type="button" data-value="Practical and durable" data-factor="1" aria-pressed="true"><strong>Durability</strong><small>Practical, hard-wearing</small></button>
+        <button class="pp-option" type="button" data-value="Balanced quality and finish" data-factor="1.25" aria-pressed="false"><strong>Balanced finish</strong><small>Quality with style</small></button>
+        <button class="pp-option" type="button" data-value="Premium finish" data-factor="1.6" aria-pressed="false"><strong>Premium finish</strong><small>Elevated materials</small></button>
+        <button class="pp-option" type="button" data-value="Need advice on options" data-factor="1.1" aria-pressed="false"><strong>Help me decide</strong><small>Discuss suitable options</small></button>
+      </div></div>
+      <div class="pp-field"><label for="pp-size">Approximate project size</label><div class="pp-range"><input id="pp-size" type="range" min="1" max="5" value="2" step="1"><output id="pp-size-label" for="pp-size">Small–medium</output></div></div>
+      <div class="pp-summary"><div class="pp-summary-top"><div><small>Indicative planning band</small><strong id="pp-estimate">R15,000 – R35,000</strong></div><span class="chip chip-proto">Not a quote</span></div><ul><li id="pp-tag-project">Kitchen renovation</li><li id="pp-tag-priority">Practical and durable</li><li id="pp-tag-size">Small–medium scope</li></ul></div>
+      <p class="pp-disclaimer">This broad, illustrative range is for early planning only—not CFD pricing or a promise. Actual cost depends on site inspection, measurements, labour, materials, access and project requirements.</p>
+      <div class="pp-actions"><a class="btn btn-primary" id="pp-whatsapp" href="https://wa.me/27729150346" target="_blank" rel="noopener">Discuss my project <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#quote">Request a quote</a></div>
+    </div>
+  </div>
+</section>
+
+
 <section class="sec sec-blueprint" id="quote" style="padding-top:clamp(2rem,4vw,3rem)">
   <div class="wrap">
     <div class="quote-grid">
@@ -3880,6 +3925,27 @@ Preferred contact: ${form.pref.value}
   if (nav) requestAnimationFrame(() => nav.classList.add('nav-motion-ready'));
 })();
 </script>
+
+<script id="cfd-v18-project-planner">
+(() => {
+ const root=document.getElementById('project-planner'); if(!root)return;
+ const wa='27729150346'; let project={name:'Kitchen renovation',base:18000}, priority={name:'Practical and durable',factor:1}, size=2;
+ const sizes=[{label:'Small',factor:.65},{label:'Small–medium',factor:1},{label:'Medium',factor:1.6},{label:'Large',factor:2.5},{label:'Extensive',factor:4}];
+ function update(){
+  const z=sizes[size-1], low=project.base*priority.factor*z.factor*.75, high=project.base*priority.factor*z.factor*1.65;
+  document.getElementById('pp-estimate').textContent='R'+Math.round(low/1000).toLocaleString('en-ZA')+',000 – R'+Math.ceil(high/1000).toLocaleString('en-ZA')+',000';
+  document.getElementById('pp-size-label').textContent=z.label;
+  document.getElementById('pp-tag-project').textContent=project.name; document.getElementById('pp-tag-priority').textContent=priority.name; document.getElementById('pp-tag-size').textContent=z.label+' scope';
+  document.getElementById('pp-step-label').textContent='Step 0'+(size>2?3:priority.factor!==1?2:1)+' / 03'; document.getElementById('pp-progress-fill').style.width=(25+size*15)+'%';
+  const msg='Hi CFD, I used the website project brief builder and would like to discuss a project.\n\nProject: '+project.name+'\nPriority: '+priority.name+'\nApproximate scope: '+z.label+'\nIllustrative planning band: R'+Math.round(low/1000)+',000 – R'+Math.ceil(high/1000)+',000\n\nI understand this is not a quotation. Please advise on the next step for a site-specific assessment.';
+  document.getElementById('pp-whatsapp').href='https://wa.me/'+wa+'?text='+encodeURIComponent(msg);
+ }
+ document.querySelectorAll('#pp-project-options .pp-option').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#pp-project-options .pp-option').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');project={name:b.dataset.value,base:Number(b.dataset.base)};update()}));
+ document.querySelectorAll('#pp-priority-options .pp-option').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#pp-priority-options .pp-option').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');priority={name:b.dataset.value,factor:Number(b.dataset.factor)};update()}));
+ document.getElementById('pp-size').addEventListener('input',e=>{size=Number(e.target.value);update()}); update();
+})();
+</script>
+
 
 </body>
 </html>
